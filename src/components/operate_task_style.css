@@ -1,0 +1,69 @@
+.task-list-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.create-task-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.task-item.running {
+  background-color: #c7ecee; /* 浅蓝色 */
+}
+
+.task-item.success {
+  background-color: #d4edda; /* 浅绿色 */
+}
+
+.task-item.failed {
+  background-color: #f8d7da; /* 淡红色 */
+}
+
+.task-item.init {
+  background-color: #f2f2f2; /* 浅灰色 */
+}
+
+.task-info {
+  font-size: 14px;
+}
+
+a {
+  color: #4caf50;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
