@@ -17,7 +17,7 @@ const MarkdownEditorComponent = ({ markdown }) => {
   return (
     <div>
       <div style={{ height: '10em', lineHeight: '1.5em', overflow: 'auto'}}>
-        <MarkdownEditor value={editorMarkdown} onChange={handleEditorChange} nodeMdText={true} nodeMdPreview={false} renderHTML={(text) => <div dangerouslySetInnerHTML={{ __html: text }} />}/>
+        <MarkdownEditor value={editorMarkdown} onChange={handleEditorChange} renderHTML={(text) => <div dangerouslySetInnerHTML={{ __html: text }} />}/>
       </div>
       <div>
         <h2>Preview:</h2>
