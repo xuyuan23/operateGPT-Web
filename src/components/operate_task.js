@@ -47,7 +47,6 @@ function TaskList() {
     try {
       const response = await fetch(url);
       const content = await response.text();
-      console.log(content)
       setFileContent(content);
     } catch (error) {
       console.error('Failed to download file:', error);

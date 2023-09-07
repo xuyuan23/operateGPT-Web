@@ -4,19 +4,21 @@ import ReactMarkdown from 'react-markdown';
 
 import 'react-markdown-editor-lite/lib/index.css';
 
-const MarkdownEditorComponent = () => {
-  const [markdown, setMarkdown] = useState('');
+const MarkdownEditorComponent = ({ markdown }) => {
+  console.log(markdown)
+  const [editorMarkdown, setEditorMarkdown] = useState(markdown);
+  console.log(editorMarkdown)
 
   const handleEditorChange = ({ text }) => {
-    setMarkdown(text);
+    setEditorMarkdown(text);
   };
 
   return (
     <div>
-      <MarkdownEditor value={markdown} onChange={handleEditorChange} renderHTML={(text) => <div dangerouslySetInnerHTML={{ __html: text }} />} />
+      <MarkdownEditor value={editorMarkdown} onChange={handleEditorChange} renderHTML={(text) => <div dangerouslySetInnerHTML={{ __html: text }} />}/>
       <div>
         <h2>Preview:</h2>
-        <ReactMarkdown>{markdown}</ReactMarkdown>
+        <ReactMarkdown>{editorMarkdown}</ReactMarkdown>
       </div>
     </div>
   );
