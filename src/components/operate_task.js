@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import MarkdownEditorComponent from './MarkdownEditor';
 import './operate_task_style.css';
 
 function TaskList() {
   const [tasks, setTasks] = useState([]);
   const [newPrompt, setNewPrompt] = useState('');
+  const [fileContent, setFileContent] = useState('');
 
   useEffect(() => {
     fetchTasks();
@@ -41,6 +43,17 @@ function TaskList() {
     }
   };
 
+  const handleDownload = async (url) => {
+    try {
+      const response = await fetch(url);
+      const content = await response.text();
+      console.log(content)
+      setFileContent(content);
+    } catch (error) {
+      console.error('Failed to download file:', error);
+    }
+  };
+
   return (
     <div className="task-list-container">
       <h1>OperateGPT Experience</h1>
@@ -66,13 +79,15 @@ function TaskList() {
               <div>Status: {task.status}</div>
               {task.result && (
                 <div>
-                  Result: <a href={task.result} download>Download</a>
+                  Result: <a href={task.result} download onClick={(event) => {event.preventDefault(); handleDownload(task.result); }}>Download</a>
                 </div>
               )}
             </div>
           </li>
         ))}
       </ul>
+      <h2>File Content</h2>
+      <MarkdownEditorComponent markdown={fileContent} />
     </div>
   );
 }
