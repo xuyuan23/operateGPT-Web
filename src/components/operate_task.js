@@ -5,6 +5,7 @@ import './operate_task_style.css';
 function TaskList() {
   const [tasks, setTasks] = useState([]);
   const [newPrompt, setNewPrompt] = useState('');
+  const [selectedLanguage, setSelectedLanguage] = useState('en');
   const [fileContent, setFileContent] = useState('');
 
   useEffect(() => {
@@ -22,7 +23,7 @@ function TaskList() {
   };
 
   const handleCreateTask = async () => {
-    const url = `http://43.156.9.162:8671/api/operate/task/create?user_id=1001&prompt=${encodeURIComponent(newPrompt)}`;
+    const url = `http://43.156.9.162:8671/api/operate/task/create?user_id=1001&prompt=${encodeURIComponent(newPrompt)}&lang=${encodeURIComponent(selectedLanguage)}`;
 
     try {
       const response = await fetch(url, {
@@ -64,6 +65,10 @@ function TaskList() {
           onChange={(e) => setNewPrompt(e.target.value)}
           placeholder="Please input some ideas..."
         />
+        <select value={selectedLanguage} onChange={(e) => setSelectedLanguage(e.target.value)}>
+          <option value="en">English</option>
+          <option value="zh">中文</option>
+        </select>
         <button onClick={handleCreateTask}>Create Task</button>
       </div>
       <br/>
